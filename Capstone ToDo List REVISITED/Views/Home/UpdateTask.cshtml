@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateTask";
+}
+
+<h1>UpdateTask</h1>
+
+@model Devs
+
+<form action="../Home/SaveChanges" method="post">
+    <input type="text" name="Id" value="@Model.Id" hidden />
+    <input type="text" name="ItemDescription" value="@Model.ItemDescription" placeholder="Item Description" />
+    <input type="date" name="DueDate" value="@Model.DueDate" placeholder="Due Date" />
+    <input type="text" name="TaskName" value="@Model.TaskName" placeholder="Task Name" />
+
+    <div class="form-control mb-4">
+        Complete? <input type="checkbox" name="Complete" value="true" />
+        <input type="checkbox" name="Complete" value="false" hidden />
+    </div>
+    @*@Html.LabelFor(m =>m.Complete)
+        @if (Model.Complete == true)
+        {
+            <input type="checkbox" name="Complete" value="true" checked />
+            <input type="checkbox" name="Complete" value="false" hidden />
+        }*@
+    <input type="submit" value="SaveChanges!" />
+</form>
+

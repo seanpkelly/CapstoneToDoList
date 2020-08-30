@@ -1,0 +1,46 @@
+﻿@{ 
+    ViewData["Title"] = "TaskIndex";
+}
+
+<h1>Task Index</h1>
+
+@*When you send a model from the controller to the view,
+    you must tell the view the datatype of the model, it's being given so that when you use the Model,
+    it has the built-in properties & methods with that datatype*@
+
+@model List<Devs>
+
+<table class="table table-bordered shadow table-hover table-info">
+    <tr class="d-table-row">
+        <th>TaskName</th>
+        <th>ItemDescription</th>
+        <th>DueDate</th>
+        <th>Complete</th>
+        <th></th>
+        </tr>
+
+    @foreach (Devs Website in Model)
+    {
+<tr>
+    <td>@Website.TaskName</td>
+    <td>@Website.ItemDescription</td>
+    <td>@Website.DueDate</td>
+    @if (@Website.Complete == true)
+    {
+        <td>YEAH YOU DID IT! Nice job.</td>
+    }
+    else
+    {
+        <td>Not done yet! Keep pushing.</td>
+    }
+    <td class="btn-danger">
+        <a href="../Home/DeleteTask?Id=@Website.Id">Delete this task</a>
+       
+    </td>
+    <td class="btn btn-success">
+        <a href="../Home/UpdateTask?Id=@Website.Id">Update this task</a>
+</tr>
+    }
+</table>
+
+<a href="../Home/AddTask" class="btn-primary">Add a new task!</a>

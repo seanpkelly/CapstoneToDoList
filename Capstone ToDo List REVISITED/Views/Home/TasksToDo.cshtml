@@ -1,0 +1,28 @@
+﻿@model List<Devs>
+
+@foreach(Devs website in Model)
+{
+    <h1>Task</h1>
+    <table class="table table-bordered shadow table-hover table-info">
+        <tr class="d-table-row">
+            <td>Item Description</td>
+            <td>@website.ItemDescription</td>
+        </tr>
+        <tr><td>Due Date:</td>
+        <td>@website.DueDate</td></tr>
+        <tr>
+            <td>Complete:</td>
+            @if (website.Complete == true)
+            {
+                <td>It is completed.</td>
+            }
+            else
+            {
+            <td>Incomplete</td>
+            }
+            <td>@website.Complete</td>
+        </tr>
+
+
+    </table>
+}
